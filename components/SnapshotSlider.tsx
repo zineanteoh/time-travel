@@ -1,7 +1,7 @@
 "use client";
 
 import { useTimeTravelStore } from "@/lib/store";
-import { Play, Pause } from "lucide-react";
+import { Pause, Play } from "lucide-react";
 import type React from "react";
 
 export default function SnapshotSlider() {
@@ -103,20 +103,19 @@ export default function SnapshotSlider() {
             : "Scrub through snapshots"
         }
       />
-      {totalSnapshots > 0 && (
-        <div className="text-xs text-gray-500 text-right">
-          Snapshot{" "}
-          {currentSnapshotIndex !== null ? currentSnapshotIndex + 1 : "-"} /{" "}
-          {totalSnapshots}
-          {" ("}
-          {currentSnapshotIndex !== null && snapshots[currentSnapshotIndex]
-            ? new Date(
-                snapshots[currentSnapshotIndex].timestamp
-              ).toLocaleTimeString()
-            : "--:--:--"}
-          {")"}
-        </div>
-      )}
+
+      <div className="text-xs text-gray-500 text-right">
+        Snapshot{" "}
+        {currentSnapshotIndex !== null ? currentSnapshotIndex + 1 : "-"} /{" "}
+        {totalSnapshots}
+        {" ("}
+        {currentSnapshotIndex !== null && snapshots[currentSnapshotIndex]
+          ? new Date(
+              snapshots[currentSnapshotIndex].timestamp
+            ).toLocaleTimeString()
+          : "--:--:--"}
+        {")"}
+      </div>
     </div>
   );
 }
