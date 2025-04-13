@@ -14,7 +14,7 @@ export default function Editor({ content, setContent }: EditorProps) {
     <textarea
       value={content}
       onChange={handleChange}
-      className="w-full h-64 p-2 border rounded"
+      className="w-full h-64 p-2 border rounded bg-white/30 dark:bg-black/30 backdrop-blur-sm"
       placeholder="Start typing..."
     />
   );
