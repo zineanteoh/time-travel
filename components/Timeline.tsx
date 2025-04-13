@@ -87,7 +87,7 @@ export default function Timeline() {
             <div
               className="absolute top-1/2 w-3 h-3 bg-blue-600 border-2 border-white rounded-full transform -translate-y-1/2 -translate-x-1/2 pointer-events-none z-20 shadow"
               style={{ left: `${currentPosition}%` }}
-              title={`Current: Snapshot ${currentSnapshotIndex + 1}`}
+              title={`Current: Snapshot ${currentSnapshotIndex ?? 0 + 1}`}
             />
           )}
         </div>

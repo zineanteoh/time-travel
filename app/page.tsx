@@ -1,13 +1,11 @@
 "use client";
 
 import Editor from "@/components/Editor";
-import SnapshotSlider from "@/components/SnapshotSlider";
+import Playback from "@/components/Playbaack";
 import Timeline from "@/components/Timeline";
 import { RetroGrid } from "@/components/magicui/retro-grid";
 import { useTimeTravelStore } from "@/lib/store";
 import { useCallback, useEffect, useRef } from "react";
-
-const IS_DEV = true;
 
 export default function Home() {
   const {
@@ -19,7 +17,6 @@ export default function Home() {
     isPlaying,
     playbackInterval,
     stepPlayback,
-    stopPlayback,
   } = useTimeTravelStore();
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -69,7 +66,7 @@ export default function Home() {
           </h1>
           <Editor content={currentContent} setContent={handleContentChange} />
           <Timeline />
-          <SnapshotSlider />
+          <Playback />
         </div>
       </div>
     </div>

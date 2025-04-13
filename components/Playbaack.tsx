@@ -4,7 +4,7 @@ import { useTimeTravelStore } from "@/lib/store";
 import { Pause, Play } from "lucide-react";
 import type React from "react";
 
-export default function SnapshotSlider() {
+export default function Playback() {
   const snapshots = useTimeTravelStore((state) => state.snapshots);
   const currentSnapshotIndex = useTimeTravelStore(
     (state) => state.currentSnapshotIndex
