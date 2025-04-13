@@ -1,11 +1,10 @@
 "use client";
 
 import { useTimeTravelStore } from "@/lib/store";
-import { Trash2, X, Play, Pause } from "lucide-react";
+import { Trash2 } from "lucide-react";
 
 export default function Timeline() {
-  const { loadSnapshot, clearAllSnapshots, togglePlayPause, isPlaying } =
-    useTimeTravelStore();
+  const { loadSnapshot, clearAllSnapshots } = useTimeTravelStore();
   const snapshots = useTimeTravelStore((state) => state.snapshots);
   const currentSnapshotIndex = useTimeTravelStore(
     (state) => state.currentSnapshotIndex
@@ -47,20 +46,10 @@ export default function Timeline() {
       : null;
 
   return (
-    <div className="p-4 border rounded-md bg-gray-50 flex flex-col items-start space-y-3">
+    <div className="p-4 border rounded-md bg-gray-50 space-y-3">
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center space-x-2">
           <h2 className="text-lg font-semibold">Timeline</h2>
-          {snapshots.length > 1 && ( // Only show play button if there's something to play
-            <button
-              onClick={togglePlayPause}
-              className="p-1.5 rounded hover:bg-gray-200 transition-colors"
-              title={isPlaying ? "Pause" : "Play"}
-              type="button"
-            >
-              {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-            </button>
-          )}
         </div>
         {snapshots.length > 0 && (
           <button

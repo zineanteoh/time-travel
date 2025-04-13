@@ -24,6 +24,7 @@ interface TimeTravelState {
 	setPlaybackIndex: (index: number | null) => void;
 	stepPlayback: () => void;
 	stopPlayback: () => void;
+	setPlaybackInterval: (interval: number) => void;
 }
 
 export const useTimeTravelStore = create<TimeTravelState>()(
@@ -34,7 +35,7 @@ export const useTimeTravelStore = create<TimeTravelState>()(
 			currentSnapshotIndex: null,
 			isPlaying: false,
 			playbackIndex: null,
-			playbackInterval: 500,
+			playbackInterval: 100,
 
 			addSnapshot: (content) => {
 				const now = Date.now();
@@ -96,10 +97,20 @@ export const useTimeTravelStore = create<TimeTravelState>()(
 			togglePlayPause: () => {
 				set((state) => {
 					const currentlyPlaying = !state.isPlaying;
-					const startIndex =
-						state.playbackIndex ??
-						state.currentSnapshotIndex ??
-						(state.snapshots.length > 0 ? state.snapshots.length - 1 : null);
+					let startIndex: number | null;
+
+					if (
+						currentlyPlaying &&
+						state.currentSnapshotIndex === 0 &&
+						state.snapshots.length > 1
+					) {
+						startIndex = state.snapshots.length - 1;
+					} else {
+						startIndex =
+							state.playbackIndex ??
+							state.currentSnapshotIndex ??
+							(state.snapshots.length > 0 ? state.snapshots.length - 1 : null);
+					}
 
 					if (
 						currentlyPlaying &&
@@ -162,6 +173,10 @@ export const useTimeTravelStore = create<TimeTravelState>()(
 					currentSnapshotIndex:
 						state.playbackIndex ?? state.currentSnapshotIndex,
 				}));
+			},
+
+			setPlaybackInterval: (interval) => {
+				set({ playbackInterval: interval });
 			},
 
 			setCurrentContent: (content) => {
