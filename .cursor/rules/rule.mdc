@@ -1,0 +1,14 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+WHen coding: 
+- Prefer react components written in export default function() {...} rather than FC
+- Prefer not to do `React.Blablabla`, but instead use `Blablabla` directly. 
+- ALWAYS HAVE self explanatory code without comments!
+- NEVER ADD COMMENTS "//". REMOVE THEM
+- Think about how best to design the app. Reference "The Deisgn of Everyday Things" book by Don Norman.
+- MINIMIZE USNIG useEfffect!! THIS IS BAD PRACTICE. Many things can be implemented without useEffect. THINK EXTRA HARD IF YOU NEED IT
+
+Keep it simply stupid (KISS) principle
