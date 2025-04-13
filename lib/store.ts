@@ -15,7 +15,6 @@ interface TimeTravelState {
 	currentContent: string;
 	setCurrentContent: (content: string) => void;
 	currentSnapshotIndex: number | null;
-	maxSnapshots: number;
 
 	isPlaying: boolean;
 	playbackIndex: number | null;
@@ -33,7 +32,6 @@ export const useTimeTravelStore = create<TimeTravelState>()(
 			snapshots: [],
 			currentContent: "",
 			currentSnapshotIndex: null,
-			maxSnapshots: 50,
 			isPlaying: false,
 			playbackIndex: null,
 			playbackInterval: 500,
@@ -42,12 +40,8 @@ export const useTimeTravelStore = create<TimeTravelState>()(
 				const now = Date.now();
 				const newSnapshot: Snapshot = { content, timestamp: now };
 				const currentSnapshots = get().snapshots;
-				const maxSnapshots = get().maxSnapshots;
 
-				const updatedSnapshots = [newSnapshot, ...currentSnapshots].slice(
-					0,
-					maxSnapshots,
-				);
+				const updatedSnapshots = [newSnapshot, ...currentSnapshots];
 
 				set({
 					snapshots: updatedSnapshots,
@@ -181,7 +175,6 @@ export const useTimeTravelStore = create<TimeTravelState>()(
 			partialize: (state) => ({
 				snapshots: state.snapshots,
 				currentContent: state.currentContent,
-				maxSnapshots: state.maxSnapshots,
 			}),
 		},
 	),

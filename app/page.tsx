@@ -1,6 +1,7 @@
 "use client";
 
 import Editor from "@/components/Editor";
+import SnapshotSlider from "@/components/SnapshotSlider";
 import Timeline from "@/components/Timeline";
 import { useTimeTravelStore } from "@/lib/store";
 import { useCallback, useEffect, useRef } from "react";
@@ -60,6 +61,7 @@ export default function Home() {
       <h1 className="text-2xl font-bold mb-4">Time Travel Editor</h1>
       <Editor content={currentContent} setContent={handleContentChange} />
       <Timeline />
+      <SnapshotSlider />
     </div>
   );
 }
