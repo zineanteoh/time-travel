@@ -1,12 +1,11 @@
 ## Time Travel
 
+<p align="center">
+  <strong>🌀 <a href="https://github.com/zineanteoh/vibe-coding">Part of the Vibe Coding Series</a></strong><br>
+  <em>A weekly challenge to build something weird using only AI in 1 hour.</em>
+</p>
+
 A simple editor that lets you "time travel" through your writing history. See every change you've made and play it back.
-
-This entire repository is coded by AI. I wrote 0 lines of code.
-
-Time: 1 hour.
-
-Every week, [@kohrachel](https://github.com/kohrachel/) and I give ourselves an hour to create a goofy project solely with AI. No human coding, any idea you can think of.
 
 ### Video Demo
 
